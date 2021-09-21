@@ -7,14 +7,5 @@
     android:id="@+id/layout"
     tools:context=".MainActivity">
 
-    <Button
-        android:layout_gravity="center"
-        android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="18sp"
-        android:textAllCaps="false"
-        android:text="Open Snackbar"
-        />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

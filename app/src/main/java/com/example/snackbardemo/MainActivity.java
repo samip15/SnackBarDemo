@@ -11,49 +11,31 @@ import android.widget.Toast;
 import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
-
-    Button button;
     CoordinatorLayout layout;
-
+    int counter = 0;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        button = findViewById(R.id.button);
         layout = findViewById(R.id.layout);
-        button.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v)
-                    {
 
-                        // Create a snackbar
-                        Snackbar snackbar
-                                = Snackbar
-                                .make(
-                                        layout,
-                                        "Message is deleted",
-                                        Snackbar.LENGTH_LONG)
-                                .setAction(
-                                        "UNDO",
+    }
 
-                                        // If the Undo button
-                                        // is pressed, show
-                                        // the message using Toast
-                                        new View.OnClickListener() {
-                                            @Override
-                                            public void onClick(View view)
-                                            {
-                                                Toast.makeText(
-                                                                MainActivity.this,
-                                                                "Undo Clicked",
-                                                                Toast.LENGTH_SHORT)
-                                                        .show();
-                                            }
-                                        });
+    @Override
+    public void onBackPressed() {
+        counter++;
+        if (counter == 2) {
+            super.onBackPressed();
+        } else {
+            // Create a snackbar
+            Snackbar snackbar
+                    = Snackbar
+                    .make(
+                            layout,
+                            "Press Back Again To Exit......",
+                            Snackbar.LENGTH_LONG);
 
-                        snackbar.show();
-                    }
-                });
+            snackbar.show();
+        }
     }
 }
