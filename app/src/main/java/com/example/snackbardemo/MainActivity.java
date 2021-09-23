@@ -12,7 +12,7 @@ import com.google.android.material.snackbar.Snackbar;
 
 public class MainActivity extends AppCompatActivity {
     CoordinatorLayout layout;
-    int counter = 0;
+    private long backPressedTime;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,8 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        counter++;
-        if (counter == 2) {
+        if (backPressedTime+2000 > System.currentTimeMillis()) {
             super.onBackPressed();
         } else {
             // Create a snackbar
@@ -32,10 +31,11 @@ public class MainActivity extends AppCompatActivity {
                     = Snackbar
                     .make(
                             layout,
-                            "Press Back Again To Exit......",
+                            "Press Back Again To Exit...",
                             Snackbar.LENGTH_LONG);
 
             snackbar.show();
+            backPressedTime = System.currentTimeMillis();
         }
     }
 }
